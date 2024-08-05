@@ -10,23 +10,22 @@ To enable the fake SSO method locally, take the following steps:
 127.0.0.1 host.docker.internal
 ```
 
-2. Enable the `fake_sso` feature flag:
+2. In the main repo, enable the `fake_sso` feature flag:
 
 ```
 make feature-toggle feature=fake_sso enabled=true
 ```
 
-3. Install dependencies for `fake_sso`:
+3. In this repo, install the dependencies:
 
 ```
-cd fake_sso
 npm i
 ```
 
-4. Start the BE with the following command:
+4. In both repos, run the docker compose file:
 
 ```
-docker compose --profile fake_sso up
+docker compose up
 ```
 
 ## Issues
