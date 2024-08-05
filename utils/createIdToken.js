@@ -1,9 +1,7 @@
 const jose = require("jose");
 const { v4: uuidv4 } = require("uuid");
 
-const secret = new TextEncoder().encode(
-  "cc7e0d44fd473002f1c42167459001140ec6389b7353f8088f4d9a95f2f596f2"
-);
+const secret = new TextEncoder().encode(process.env.FAKE_SSO_JWT_SECRET);
 
 const alg = "HS256";
 

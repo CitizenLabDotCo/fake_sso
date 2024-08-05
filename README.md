@@ -22,7 +22,9 @@ make feature-toggle feature=fake_sso enabled=true
 npm i
 ```
 
-4. In both repos, run the docker compose file:
+4. In this repo, create a file called `back-secret.env` in the `env_files` folder, and make sure it has the correct `FAKE_SSO_JWT_SECRET`. It should match the one in `env_files/back-secret.env` in the main repo.
+
+5. In both repos, run the docker compose file:
 
 ```
 docker compose up

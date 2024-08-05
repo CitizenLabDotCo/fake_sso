@@ -2,3 +2,5 @@ node_modules
 
 # Local VsCode config
 .vscode/*
+
+env_files/*
