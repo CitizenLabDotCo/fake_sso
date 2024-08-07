@@ -3,10 +3,22 @@ var express = require("express");
 var path = require("path");
 var cookieParser = require("cookie-parser");
 var logger = require("morgan");
+var helmet = require("helmet");
 
 var indexRouter = require("./routes/index");
 
 var app = express();
+
+app.use(helmet());
+
+const RateLimit = require("express-rate-limit");
+const limiter = RateLimit({
+  windowMs: 1 * 60 * 1000, // 1 minute
+  max: 20,
+});
+
+// Apply rate limiter to all requests
+app.use(limiter);
 
 // view engine setup
 app.set("views", path.join(__dirname, "views"));
