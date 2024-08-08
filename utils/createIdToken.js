@@ -5,6 +5,7 @@ const { randomBytes } = require("crypto");
 require('dotenv').config({ path: './env_files/back-secret.env' });
 
 const secret = new TextEncoder().encode(process.env.FAKE_SSO_JWT_SECRET);
+const issuer = process.env.FAKE_SSO_JWT_ISSUER ?? "http://host.docker.internal";
 
 const alg = "HS256";
 
@@ -27,7 +28,7 @@ const createIdToken = () => {
   })
     .setProtectedHeader({ alg })
     .setIssuedAt()
-    .setIssuer("http://host.docker.internal")
+    .setIssuer(issuer)
     .setAudience("govocal_client")
     .setExpirationTime("2h")
     .sign(secret);
