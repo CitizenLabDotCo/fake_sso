@@ -3,13 +3,13 @@ var express = require("express");
 var path = require("path");
 var cookieParser = require("cookie-parser");
 var logger = require("morgan");
-var helmet = require("helmet");
+// var helmet = require("helmet");
 
 var indexRouter = require("./routes/index");
 
 var app = express();
 
-app.use(helmet());
+// app.use(helmet());
 
 const RateLimit = require("express-rate-limit");
 const limiter = RateLimit({
