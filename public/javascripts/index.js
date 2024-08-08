@@ -16,3 +16,5 @@ function onSubmit() {
 
   window.location.href = `${redirect_uri}?${newParams.toString()}`;
 }
+
+document.getElementById("submit-button").addEventListener("click", myFunction);
