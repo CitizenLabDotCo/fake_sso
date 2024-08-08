@@ -7,6 +7,8 @@ require('dotenv').config({ path: './env_files/back-secret.env' });
 const secret = new TextEncoder().encode(process.env.FAKE_SSO_JWT_SECRET);
 const issuer = process.env.FAKE_SSO_JWT_ISSUER ?? "http://host.docker.internal";
 
+console.log({ issuer })
+
 const alg = "HS256";
 
 const createIdToken = () => {
@@ -17,10 +19,10 @@ const createIdToken = () => {
   return new jose.SignJWT({
     uid,
     sub: uid,
+    azp: "govocal_client",
     email: `${randomString}@example.com`,
     email_verified: true,
     name: "John Doe",
-    azp: "govocal_client",
     given_name: "John",
     family_name: "Doe",
     gender: "male",

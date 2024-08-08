@@ -18,6 +18,7 @@ router.get("/oauth2/authorize", (_req, res) => {
 // the /userinfo endpoint.
 router.post("/oauth2/token", async (_req, res) => {
   const idToken = await createIdToken();
+  console.log({ idToken })
 
   res.json({
     token_type: "Bearer",
