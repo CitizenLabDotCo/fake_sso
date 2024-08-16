@@ -1,15 +1,16 @@
 const express = require("express");
 const router = express.Router();
 const { createIdToken } = require("../utils/createIdToken");
+const { getProfiles } = require("../utils/profiles");
 
 // GET home page
 router.get("/", (_req, res) => {
-  res.render("index", { title: "Fake SSO" });
+  res.render("index", { title: "Fake SSO", profiles: getProfiles() });
 });
 
 // The authorization endpoint, same as homepage
 router.get("/oauth2/authorize", (_req, res) => {
-  res.render("index", { title: "Fake SSO" });
+  res.render("index", { title: "Fake SSO", profiles: getProfiles() });
 });
 
 // The token endpoint: receives code, returns id token and access token.

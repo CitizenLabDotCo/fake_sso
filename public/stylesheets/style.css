@@ -24,3 +24,14 @@ button {
   font-size: 16px;
   max-width: 150px;
 }
+
+label#profile-select-label {
+  display: block;
+  margin-bottom: 10px;
+}
+
+select#profile-select {
+  padding: 8px;
+  font-size: 16px;
+  margin-bottom: 30px;
+}
