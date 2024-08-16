@@ -2,7 +2,6 @@ const PROFILES = [
   {
     id: 'john_doe',
     description: "John Doe (random email, has name, has custom fields)",
-    token: 'john_doe_token',
     first_name: "John",
     last_name: "Doe",
     has_email: true,
@@ -13,7 +12,6 @@ const PROFILES = [
   {
     id: 'jane_doe',
     description: "Jane Doe (no email, has name, has custom fields)",
-    token: 'jane_doe_token',
     first_name: "Jane",
     last_name: "Doe",
     has_email: false,
@@ -29,12 +27,7 @@ const getProfileById = (id) => {
   return PROFILES.find(p => p.id === id);
 }
 
-const getProfileByToken = (token) => {
-  return PROFILES.find(p => p.token === token);
-};
-
 module.exports = {
   getProfiles,
   getProfileById,
-  getProfileByToken
 };
