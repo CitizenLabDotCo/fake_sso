@@ -15,6 +15,16 @@
       <%= title %>
     </h1>
     <main>
+      <div>
+        <label for="profile-select" id="profile-select-label">Profile:</label>
+        <select name="profile-select" id="profile-select">
+          <% profiles.forEach(function(profile) { %>
+            <option value="<%= profile.id %>">
+              <%= profile.description %>
+            </option>
+            <% }); %>
+        </select>
+      </div>
       <button id="submit-button">Submit SSO</button>
     </main>
   </div>
