@@ -18,6 +18,16 @@ const PROFILES = [
     verified_email: false,
     gender: "female",
     birthdate: "2001-02-02",
+  },
+  {
+    id: 'tracy_smith',
+    description: "Tracy Smith (random unverified email, has name, has custom fields)",
+    first_name: "Tracy",
+    last_name: "Smith",
+    has_email: true,
+    verified_email: false,
+    gender: "female",
+    birthdate: "2002-03-03",
   }
 ]
 
