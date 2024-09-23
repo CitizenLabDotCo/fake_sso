@@ -11,17 +11,17 @@ const issuer = process.env.FAKE_SSO_ISSUER ?? "http://host.docker.internal";
 const alg = "HS256";
 
 const createIdToken = (profileId) => {
-  const uid = uuidv4();
-  const randomString = randomBytes(6).toString("hex");
-
   const profile = getProfileById(profileId);
+
+  const uid = uuidv4();
+  const emailString = profile.new_user ? randomBytes(6).toString("hex") : profile.id;
 
   // https://www.iana.org/assignments/jwt/jwt.xhtml
   return new jose.SignJWT({
     uid,
-    sub: uid,
+    sub: profile.new_user ? uid : profile.id,
     azp: "govocal_client",
-    email: profile.has_email ? `${randomString}@example.com` : undefined,
+    email: profile.has_email ? `${emailString}@example.com` : undefined,
     email_verified: profile.verified_email,
     name: `${profile.first_name} ${profile.last_name}`,
     given_name: profile.first_name,
@@ -29,12 +29,12 @@ const createIdToken = (profileId) => {
     gender: profile.gender,
     birthdate: profile.birthdate,
   })
-    .setProtectedHeader({ alg })
-    .setIssuedAt()
-    .setIssuer(issuer)
-    .setAudience("govocal_client")
-    .setExpirationTime("2h")
-    .sign(secret);
+      .setProtectedHeader({ alg })
+      .setIssuedAt()
+      .setIssuer(issuer)
+      .setAudience("govocal_client")
+      .setExpirationTime("2h")
+      .sign(secret);
 };
 
 module.exports = { createIdToken };
