@@ -2,7 +2,7 @@
 
 ## Setup
 
-To enable the fake SSO method locally, take the following steps:
+To enable the fake SSO method locally, use the following steps:
 
 1. Add the following line to `/etc/hosts`:
 
