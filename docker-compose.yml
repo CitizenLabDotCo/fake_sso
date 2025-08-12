@@ -1,5 +1,3 @@
-version: "3.8"
-
 services:
   fake_sso:
     container_name: cl-fake-sso
