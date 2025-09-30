@@ -14,14 +14,13 @@ const createIdToken = (profileId) => {
   const profile = getProfileById(profileId);
 
   const uid = uuidv4();
-  const email = profile.email ?? `${randomBytes(6).toString("hex")}@example.com`;
 
   // https://www.iana.org/assignments/jwt/jwt.xhtml
   return new jose.SignJWT({
     uid,
     sub: profile.new_user ? uid : profile.id,
     azp: "govocal_client",
-    email: email,
+    email: profile.email,
     email_verified: profile.verified_email,
     name: `${profile.first_name} ${profile.last_name}`,
     given_name: profile.first_name,
