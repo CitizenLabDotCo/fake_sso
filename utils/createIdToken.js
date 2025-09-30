@@ -1,6 +1,5 @@
 const jose = require("jose");
 const { v4: uuidv4 } = require("uuid");
-const { randomBytes } = require("crypto");
 const { getProfileById } = require("./profiles");
 
 require('dotenv').config({ path: './env_files/back-secret.env' });

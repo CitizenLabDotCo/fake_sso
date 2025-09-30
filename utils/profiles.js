@@ -1,3 +1,5 @@
+const { randomBytes } = require("crypto");
+
 const randomEmail = () => {
   const randomString = randomBytes(6).toString("hex");
   return `${randomString}@example.com`;
