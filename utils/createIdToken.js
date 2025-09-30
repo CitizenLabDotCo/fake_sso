@@ -15,6 +15,8 @@ const createIdToken = (profileId) => {
 
   const uid = uuidv4();
 
+  console.log(profile.email)
+
   // https://www.iana.org/assignments/jwt/jwt.xhtml
   return new jose.SignJWT({
     uid,

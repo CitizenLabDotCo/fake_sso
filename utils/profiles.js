@@ -7,7 +7,7 @@ const PROFILES = [
     has_email: true,
     verified_email: true,
     new_user: true,
-    email: 'marlin_hauck@kiehn.test',
+    email: 'john_doe@example.com',
     gender: "male",
     birthdate: "2000-01-01",
   },
