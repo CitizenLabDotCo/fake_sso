@@ -7,11 +7,18 @@ function onSubmit() {
   const state = params.get("state");
 
   const profileSelect = document.getElementById("profile-select");
-  const profile = profileSelect?.value;
+  const profileId = profileSelect?.value;
+
+  const emailInput = document.getElementById("email-input");
+  const email = emailInput?.value?.trim();
+
+  const code = email
+    ? btoa(JSON.stringify({ profileId, email }))
+    : profileId;
 
   const newParams = new URLSearchParams();
   newParams.append("state", state);
-  newParams.append("code", profile);
+  newParams.append("code", code);
   newParams.append("scope", SCOPE);
   newParams.append("authuser", "0");
   newParams.append("prompt", "none");

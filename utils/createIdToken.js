@@ -9,7 +9,7 @@ const issuer = process.env.FAKE_SSO_ISSUER ?? "http://host.docker.internal";
 
 const alg = "HS256";
 
-const createIdToken = (profileId) => {
+const createIdToken = (profileId, emailOverride = null) => {
   const profile = getProfileById(profileId);
 
   const uid = uuidv4();
@@ -19,7 +19,7 @@ const createIdToken = (profileId) => {
     uid,
     sub: profile.new_user ? uid : profile.id,
     azp: "govocal_client",
-    email: profile.email,
+    email: emailOverride ?? profile.email,
     email_verified: profile.verified_email,
     name: `${profile.first_name} ${profile.last_name}`,
     given_name: profile.first_name,
