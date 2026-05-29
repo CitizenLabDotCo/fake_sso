@@ -66,6 +66,18 @@ const getProfiles = () => {
       verified_email: false,
       gender: "female",
       birthdate: "1990-10-10",
+    },
+    {
+      id: 'bradley_fixed',
+      description: "Bradley Fixed (fixed unverified email & ID, has name, has custom fields)",
+      first_name: "Bradley",
+      last_name: "Fixed",
+      has_email: true,
+      new_user: false,
+      email: 'bradley_fixed@example.com',
+      verified_email: false,
+      gender: "male",
+      birthdate: "1984-07-01",
     }
   ]
 };
