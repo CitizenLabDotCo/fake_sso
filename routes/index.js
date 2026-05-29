@@ -20,10 +20,23 @@ router.get("/oauth2/authorize", (_req, res) => {
 router.post("/oauth2/token", async (req, res) => {
   // This is the code that was passed to the redirect_uri.
   // See public/javascripts/index.js
-  const profileId = req.body.code;
+  let profileId = req.body.code;
+  let emailOverride = null;
+  let subOverride = null;
+
+  try {
+    const decoded = JSON.parse(Buffer.from(profileId, "base64").toString("utf8"));
+    if (decoded.profileId) {
+      profileId = decoded.profileId;
+      emailOverride = decoded.email ?? null;
+      subOverride = decoded.sub ?? null;
+    }
+  } catch (_) {
+    // plain profile ID — fall through
+  }
 
   // We then use this profile to create an id token.
-  const idToken = await createIdToken(profileId);
+  const idToken = await createIdToken(profileId, emailOverride, subOverride);
 
   res.json({
     token_type: "Bearer",
