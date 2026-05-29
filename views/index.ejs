@@ -15,8 +15,8 @@
       <%= title %>
     </h1>
     <main>
-      <div>
-        <label for="profile-select" id="profile-select-label">Profile:</label>
+      <div class="field-container">
+        <label for="profile-select">Profile:</label>
         <select name="profile-select" id="profile-select">
           <% profiles.forEach(function(profile) { %>
             <option value="<%= profile.id %>">
@@ -25,9 +25,13 @@
             <% }); %>
         </select>
       </div>
-      <div class="email-input-container">
+      <div class="field-container">
         <label for="email-input">Email (optional override):</label>
         <input type="email" id="email-input" placeholder="Leave blank to use profile default" />
+      </div>
+      <div class="field-container">
+        <label for="sub-input">Sub (optional override):</label>
+        <input type="text" id="sub-input" placeholder="Leave blank to use profile default" />
       </div>
       <button id="submit-button">Submit SSO</button>
     </main>

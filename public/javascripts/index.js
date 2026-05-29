@@ -12,8 +12,11 @@ function onSubmit() {
   const emailInput = document.getElementById("email-input");
   const email = emailInput?.value?.trim();
 
-  const code = email
-    ? btoa(JSON.stringify({ profileId, email }))
+  const subInput = document.getElementById("sub-input");
+  const sub = subInput?.value?.trim();
+
+  const code = (email || sub)
+    ? btoa(JSON.stringify({ profileId, email: email || undefined, sub: sub || undefined }))
     : profileId;
 
   const newParams = new URLSearchParams();
