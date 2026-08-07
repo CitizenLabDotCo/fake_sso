@@ -45,11 +45,11 @@ router.post("/oauth2/token", async (req, res) => {
   });
 });
 
-// The userinfo endpoint. Data returned here is not used
-// for anything at the moment.
+// The userinfo endpoint. Used to return extra information
+// that is not part of the id token specification.
 router.get("/userinfo", (_req, res) => {
   res.json({
-    some: "stuff",
+    postal_code: "1212",
   });
 });
 
